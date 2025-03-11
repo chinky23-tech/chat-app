@@ -1,3 +1,4 @@
+// Get DOM elements
 const chatMessages = document.getElementById('chat-messages');
 const messageInput = document.getElementById('message-input');
 const sendButton = document.getElementById('send-button');
@@ -24,8 +25,14 @@ sendButton.addEventListener('click', () => {
       sender: 'User', // Replace with a dynamic username if needed
       message: message,
       timestamp: timestamp
+    })
+    .then(() => {
+      console.log('Message sent successfully!');
+      messageInput.value = ''; // Clear the input field
+    })
+    .catch((error) => {
+      console.error('Error sending message: ', error);
     });
-    messageInput.value = '';
   }
 });
 
